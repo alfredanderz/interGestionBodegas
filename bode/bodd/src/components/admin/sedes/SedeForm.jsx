@@ -29,10 +29,6 @@ const SedeForm = () => {
     fetchAdministradores();
   }, []);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -77,35 +73,7 @@ const SedeForm = () => {
       </p>
 
       {/* Ubicación de la Sede */}
-      <label className="input validator mb-4">
-        <svg
-          className="h-[1em] opacity-50"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          <g
-            strokeLinejoin="round"
-            strokeLinecap="round"
-            strokeWidth="2.5"
-            fill="none"
-            stroke="currentColor"
-          >
-            <path d="M12 2a10 10 0 1 1-7.07 2.93A10 10 0 0 1 12 2z"></path>
-            <path d="M12 6v6h6"></path>
-          </g>
-        </svg>
-        <input
-          type="text"
-          name="direccion"
-          required
-          placeholder="Ubicación de la Sede"
-          minLength="5"
-          maxLength="100"
-          title="Debe tener entre 5 y 100 caracteres"
-          value={formData.direccion}
-          onChange={handleChange}
-        />
-      </label>
+
       <p className="validator-hint">Ingrese la ubicación de la sede.</p>
 
       <select

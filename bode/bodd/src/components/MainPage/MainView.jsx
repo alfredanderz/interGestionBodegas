@@ -1,5 +1,5 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,18 +11,6 @@ import drop from "./img/drop.png";
 import Navbar from "../admin/Navbar";
 
 export default function MainView() {
-  const images = [
-    "https://blog.akzent.mx/hubfs/claves-en-la-digitalizacion-de-bodegas-industriales-akzent-blog-espan__ol_720.jpg",
-    "https://img10.naventcdn.com/avisos/18/01/42/83/36/34/360x266/1442368434.jpg?isFirstImage=true",
-    "https://eldiarioinmobiliario.cl/wp-content/uploads/2024/03/CENTRO-DE-BODEGAS_EDI.png",
-    "https://u-storage.com.mx/blog/wp-content/uploads/2018/09/Sucursal-DelValle4-800x433.jpg",
-    "https://bodegachica.cl/wp-content/uploads/2021/10/funcionesbodega.jpg",
-    "https://www.partidalogistics.com/wp-content/uploads/2024/11/bonded-warehouse.jpg",
-    "https://safestorage.com.mx/wp-content/uploads/2020/07/SAFE-STORAGE-SAA138-2020-27.jpg",
-    "https://assets.easybroker.com/property_images/4436926/74164840/EB-QA6926.jpeg?version=1713743343",
-    "https://u-storage.com.mx/images/bodegas-arriba-y-abajo.webp",
-    "https://www.df.cl/noticias/site/artic/20190624/imag/foto_0000000220190624174510.jpg",
-  ];
   return (
     <div className="w-full font-sans">
       <Navbar></Navbar>
@@ -169,11 +157,7 @@ export default function MainView() {
           pagination={{ clickable: true }}
           modules={[Autoplay, Navigation, Pagination]}
           className="w-full"
-        >
-          {images.map(() => (
-            <SwiperSlide></SwiperSlide>
-          ))}
-        </Swiper>
+        ></Swiper>
       </section>
 
       {/* Ubicación */}
