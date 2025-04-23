@@ -64,7 +64,6 @@ const UserAdminForm = () => {
     const payload = {
       ...formData,
       rol: "ADMINISTRADOR",
-      password: "Admin123!",
     };
 
     const method = isEditing ? "PUT" : "POST";
