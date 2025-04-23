@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Menu, LogOut, Plus, Edit } from "lucide-react";
 
-
 const VistaCliente = () => {
-  const [clientes, setClientes] = useState([
+  const [clientes] = useState([
     {
       id: 1,
       nombre: "Juan Pérez",
@@ -11,7 +10,12 @@ const VistaCliente = () => {
       estado: "Activo",
       bodegas: [
         { folio: "B1", estadoPago: "Pagado", tamano: "Mediana", edificio: "A" },
-        { folio: "B2", estadoPago: "No Pagado", tamano: "Grande", edificio: "B" },
+        {
+          folio: "B2",
+          estadoPago: "No Pagado",
+          tamano: "Grande",
+          edificio: "B",
+        },
       ],
     },
     {
@@ -30,7 +34,7 @@ const VistaCliente = () => {
   };
 
   const handleGoToAnotherPage = () => {
-    window.location.href = "/sedes/dashboard"; 
+    window.location.href = "/sedes/dashboard";
   };
 
   return (
@@ -63,7 +67,9 @@ const VistaCliente = () => {
                   <th className="p-3 border border-gray-300">Nombre</th>
                   <th className="p-3 border border-gray-300">Email</th>
                   <th className="p-3 border border-gray-300">Estado</th>
-                  <th className="p-3 border border-gray-300">Bodegas Rentadas</th>
+                  <th className="p-3 border border-gray-300">
+                    Bodegas Rentadas
+                  </th>
                   <th className="p-3 border border-gray-300">Acciones</th>
                 </tr>
               </thead>
@@ -71,13 +77,19 @@ const VistaCliente = () => {
                 {clientes.map((cliente) => (
                   <tr key={cliente.id} className="text-gray-800 text-center">
                     <td className="p-3 border border-gray-300">{cliente.id}</td>
-                    <td className="p-3 border border-gray-300">{cliente.nombre}</td>
-                    <td className="p-3 border border-gray-300">{cliente.email}</td>
-                    <td className="p-3 border border-gray-300">{cliente.estado}</td>
+                    <td className="p-3 border border-gray-300">
+                      {cliente.nombre}
+                    </td>
+                    <td className="p-3 border border-gray-300">
+                      {cliente.email}
+                    </td>
+                    <td className="p-3 border border-gray-300">
+                      {cliente.estado}
+                    </td>
                     <td className="p-3 border border-gray-300">
                       <ul className="space-y-2">
-                        {cliente.bodegas.map((bodega, index) => (
-                          <li key={index}>
+                        {cliente.bodegas.map((bodega, i) => (
+                          <li key={i}>
                             <span>{`Folio: ${bodega.folio} - ${bodega.tamano} - ${bodega.edificio} - ${bodega.estadoPago}`}</span>
                           </li>
                         ))}
@@ -95,7 +107,6 @@ const VistaCliente = () => {
           </div>
         </div>
 
-        
         <button
           onClick={handleGoToAnotherPage}
           className="mt-6 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-all duration-300"

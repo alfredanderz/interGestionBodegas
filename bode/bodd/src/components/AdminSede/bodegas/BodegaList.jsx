@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const BodegaList = ({ bodegas, onDelete }) => {
   const navigate = useNavigate();
@@ -32,9 +33,7 @@ const BodegaList = ({ bodegas, onDelete }) => {
                 <td>
                   <button
                     className="btn btn-sm btn-outline btn-primary mr-2"
-                    onClick={() =>
-                      navigate(`/sedes/bodegas/edit/${bodega.id}`)
-                    }
+                    onClick={() => navigate(`/sedes/bodegas/edit/${bodega.id}`)}
                   >
                     Editar
                   </button>
@@ -58,6 +57,20 @@ const BodegaList = ({ bodegas, onDelete }) => {
       </table>
     </div>
   );
+};
+
+BodegaList.propTypes = {
+  bodegas: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      folio: PropTypes.string,
+      precio: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      status: PropTypes.string,
+      tamano: PropTypes.string,
+      descripcion: PropTypes.string,
+    })
+  ).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default BodegaList;
