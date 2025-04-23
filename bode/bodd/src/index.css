@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Tus variables personalizadas */
+:root {
+  --custom-color: orange;
+}
+
+/* Tus estilos personalizados */
+.custom-bg {
+  background-color: var(--custom-color);
+  color: white;
+  border: none;
+}
