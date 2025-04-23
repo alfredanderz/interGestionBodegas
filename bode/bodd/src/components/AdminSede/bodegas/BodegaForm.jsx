@@ -13,7 +13,6 @@ const BodegaForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [sedes, setSedes] = useState([]);
 
   const token = localStorage.getItem("token");
   const sedeId = localStorage.getItem("sedeId");
