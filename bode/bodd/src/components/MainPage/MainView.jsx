@@ -188,15 +188,7 @@ export default function MainView() {
           ¡Ven a conocernos!
         </h2>
 
-        <div className="w-full max-w-4xl mx-auto mt-4 mb-20">
-          <iframe
-            className="w-full h-96 rounded-lg shadow-lg"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60240.290885546634!2d-99.2572227!3d18.9186118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cddf99525bb5bb%3A0xb34d4fa19655cd52!2sCuernavaca%2C%20Mor.!5e0!3m2!1ses-419!2smx!4v1710192834860!5m2!1ses-419!2smx"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+        <div className="w-full max-w-4xl mx-auto mt-4 mb-20"></div>
       </section>
 
       <footer className="bg-gray-500   text-center py-6">
@@ -225,7 +217,7 @@ export default function MainView() {
           </p>
         </section>
         <div className="flex justify-center space-x-4 mt-4">
-          <a href="#" className="hover:text-orange-500 transition"></a>
+          <a className="hover:text-orange-500 transition"></a>
         </div>
       </footer>
     </div>

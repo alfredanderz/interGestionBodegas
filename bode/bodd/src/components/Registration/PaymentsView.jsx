@@ -46,7 +46,6 @@ export default function PaymentsView() {
     setIsSubmitting(true);
     try {
       console.log("Procesando pago con SPEI");
-      // await processPayment(paymentDetails);
     } catch (error) {
       console.error("Error en el pago:", error);
     } finally {
@@ -56,13 +55,11 @@ export default function PaymentsView() {
 
   return (
     <>
-      {/* Fondo fijo, detrás de todo */}
       <div
         className="fixed inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${cop})` }}
       />
 
-      {/* Contenido normal, por encima del fondo */}
       <div className="relative z-10 flex flex-col items-center min-h-screen pt-24">
         <h1 className="text-3xl font-bold mb-10 bg-white px-6 py-3 rounded-lg shadow-lg text-black">
           Realiza tu pago con SPEI

@@ -36,10 +36,7 @@ const ColorPicker = () => {
         </svg>
       </div>
 
-      <ul
-        tabIndex={0}
-        className="dropdown-content bg-base-300 rounded-box z-10 w-52 p-2 shadow-2xl max-h-96 overflow-y-auto"
-      >
+      <ul className="dropdown-content bg-base-300 rounded-box z-10 w-52 p-2 shadow-2xl max-h-96 overflow-y-auto">
         {colorOptions.map((c) => (
           <li key={c.value}>
             <label className="btn btn-sm btn-block btn-ghost justify-start gap-2 cursor-pointer">

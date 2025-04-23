@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const SedeForm = ({ sedes, usuarios }) => {
+const SedeForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditing = id !== undefined;
@@ -70,41 +70,8 @@ const SedeForm = ({ sedes, usuarios }) => {
       onSubmit={handleSubmit}
       className="p-6 bg-base-100 rounded-lg shadow-md mt-[80px]"
     >
-      <h2 class="text-xl font-bold mb-4 mt-[2px]">
-        {isEditing ? "Editar Sede" : "Nueva Sede"}
-      </h2>
+      <h2>{isEditing ? "Editar Sede" : "Nueva Sede"}</h2>
 
-      {/* Nombre de la Sede */}
-      <label className="input validator mb-4">
-        <svg
-          className="h-[1em] opacity-50"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          <g
-            strokeLinejoin="round"
-            strokeLinecap="round"
-            strokeWidth="2.5"
-            fill="none"
-            stroke="currentColor"
-          >
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </g>
-        </svg>
-        <input
-          type="text"
-          name="nombre"
-          required
-          placeholder="Nombre de la Sede"
-          pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,50}"
-          minLength="3"
-          maxLength="50"
-          title="Solo letras y espacios, entre 3 y 50 caracteres"
-          value={formData.nombre}
-          onChange={handleChange}
-        />
-      </label>
       <p className="validator-hint">
         Debe tener entre 3 y 50 caracteres y solo contener letras.
       </p>
