@@ -170,14 +170,8 @@ export default function MainView() {
           modules={[Autoplay, Navigation, Pagination]}
           className="w-full"
         >
-          {images.map((src) => (
-            <SwiperSlide>
-              <img
-                src={src}
-                alt={`Bodega ${+1}`}
-                className="w-full h-60 object-cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105"
-              />
-            </SwiperSlide>
+          {images.map(() => (
+            <SwiperSlide></SwiperSlide>
           ))}
         </Swiper>
       </section>

@@ -2,46 +2,6 @@ import React from "react";
 import cop from "./img/cop.jpg";
 
 export default function ExpirationView() {
-  const bodegas = [
-    {
-      folio: "B01",
-      tamaño: "Mediana",
-      precio: "$5,000",
-      vencimiento: "15/03/2025",
-      estado: "Vigente",
-      accion: "Renovado",
-    },
-    {
-      folio: "B03",
-      tamaño: "Mediana",
-      precio: "$5,000",
-      vencimiento: "15/03/2025",
-      estado: "Vigente",
-      accion: "Renovar",
-    },
-    {
-      folio: "C06",
-      tamaño: "Grande",
-      precio: "$7,000",
-      vencimiento: "25/03/2025",
-      estado: "Próximo a vencer",
-      accion: "Renovar",
-    },
-    {
-      folio: "C12",
-      tamaño: "Mediana",
-      precio: "$5,000",
-      vencimiento: "25/03/2025",
-      estado: "Próximo a vencer",
-      accion: "Renovar",
-    },
-  ];
-
-  const handleAction = (accion) => {
-    console.log(`Acción seleccionada: ${accion}`);
-    // Aquí puedes agregar la lógica para renovar o tomar la acción correspondiente.
-  };
-
   return (
     <div
       className="h-screen w-screen flex flex-col items-center relative"

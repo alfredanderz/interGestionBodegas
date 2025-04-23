@@ -108,7 +108,6 @@ const SedeForm = () => {
       </label>
       <p className="validator-hint">Ingrese la ubicación de la sede.</p>
 
-      <label className="block font-medium mb-2">Administradores</label>
       <select
         multiple
         name="administradores"
