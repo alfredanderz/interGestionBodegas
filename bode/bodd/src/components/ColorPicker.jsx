@@ -23,7 +23,7 @@ const ColorPicker = () => {
 
   return (
     <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn custom-bg m-1">
+      <div tabIndex={0} className="btn custom-bg m-1">
         Tema
         <svg
           width="12px"

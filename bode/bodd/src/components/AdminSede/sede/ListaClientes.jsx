@@ -88,8 +88,8 @@ const VistaCliente = () => {
                     </td>
                     <td className="p-3 border border-gray-300">
                       <ul className="space-y-2">
-                        {cliente.bodegas.map((bodega, i) => (
-                          <li key={i}>
+                        {cliente.bodegas.map((bodega) => (
+                          <li>
                             <span>{`Folio: ${bodega.folio} - ${bodega.tamano} - ${bodega.edificio} - ${bodega.estadoPago}`}</span>
                           </li>
                         ))}

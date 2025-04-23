@@ -1,11 +1,31 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-
 const bodegasSimuladas = [
-  { id: "B1", estado: "vacante", precio: 1500, tamano: "chica", edificio: "A", folio: "B32" },
-  { id: "B2", estado: "ocupada", precio: 1800, tamano: "mediana", edificio: "B", folio: "B33" },
-  { id: "B3", estado: "vacante", precio: 2200, tamano: "grande", edificio: "C", folio: "B34" },
+  {
+    id: "B1",
+    estado: "vacante",
+    precio: 1500,
+    tamano: "chica",
+    edificio: "A",
+    folio: "B32",
+  },
+  {
+    id: "B2",
+    estado: "ocupada",
+    precio: 1800,
+    tamano: "mediana",
+    edificio: "B",
+    folio: "B33",
+  },
+  {
+    id: "B3",
+    estado: "vacante",
+    precio: 2200,
+    tamano: "grande",
+    edificio: "C",
+    folio: "B34",
+  },
 ];
 
 const BodegaGestion = () => {
@@ -15,13 +35,20 @@ const BodegaGestion = () => {
   const [tamano, setTamano] = useState("");
   const [vacante, setVacante] = useState("");
   const [edificio, setEdificio] = useState("");
-  const [bodegaEdicion, setBodegaEdicion] = useState(null);
+  const [bodegaEdicion] = useState(null);
 
   const isFormValid = () => folio && precio && tamano && vacante && edificio;
-  
+
   const handleSubmit = () => {
     if (isFormValid()) {
-      const nuevaBodega = { folio, precio, tamano, vacante, edificio, estado: vacante };
+      const nuevaBodega = {
+        folio,
+        precio,
+        tamano,
+        vacante,
+        edificio,
+        estado: vacante,
+      };
       setBodegas([...bodegas, nuevaBodega]);
 
       Swal.fire({
@@ -34,7 +61,7 @@ const BodegaGestion = () => {
         reverseButtons: true,
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = "/sedes/vistabodega"; 
+          window.location.href = "/sedes/vistabodega";
         }
       });
 
@@ -49,7 +76,7 @@ const BodegaGestion = () => {
         title: "Error al guardar",
         text: "No se pudo registrar la bodega. Intenta más tarde.",
       });
-      console.error("Error al guardar:", error);
+      console.error("Error al guardar:");
     }
   };
 
@@ -71,7 +98,7 @@ const BodegaGestion = () => {
               placeholder="Folio (Ej: B32)"
               value={folio}
               onChange={(e) => setFolio(e.target.value)}
-              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"} 
+              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"}
             />
             <input
               className="w-full p-3 border border-gray-300 rounded-lg"
@@ -79,7 +106,7 @@ const BodegaGestion = () => {
               type="number"
               value={precio}
               onChange={(e) => setPrecio(e.target.value)}
-              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"} 
+              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"}
             />
           </div>
 
@@ -88,7 +115,7 @@ const BodegaGestion = () => {
               className="w-full p-3 border border-gray-300 rounded-lg"
               value={tamano}
               onChange={(e) => setTamano(e.target.value)}
-              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"} 
+              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"}
             >
               <option value="">Tamaño de la bodega</option>
               <option value="Chica">Chica</option>
@@ -99,7 +126,7 @@ const BodegaGestion = () => {
               className="w-full p-3 border border-gray-300 rounded-lg"
               value={vacante}
               onChange={(e) => setVacante(e.target.value)}
-              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"} 
+              disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"}
             >
               <option value="">Estado</option>
               <option value="DISPONIBLE">Disponible</option>
@@ -113,7 +140,7 @@ const BodegaGestion = () => {
             placeholder="Edificio (Ej: A, B, C...)"
             value={edificio}
             onChange={(e) => setEdificio(e.target.value)}
-            disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"} 
+            disabled={bodegaEdicion && bodegaEdicion.estado === "ocupada"}
           />
 
           <button
