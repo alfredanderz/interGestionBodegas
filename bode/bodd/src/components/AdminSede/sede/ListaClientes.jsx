@@ -87,13 +87,7 @@ const VistaCliente = () => {
                       {cliente.estado}
                     </td>
                     <td className="p-3 border border-gray-300">
-                      <ul className="space-y-2">
-                        {cliente.bodegas.map((bodega) => (
-                          <li>
-                            <span>{`Folio: ${bodega.folio} - ${bodega.tamano} - ${bodega.edificio} - ${bodega.estadoPago}`}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <ul className="space-y-2"></ul>
                     </td>
                     <td className="p-3 border border-gray-300">
                       <button className="bg-blue-500 text-white px-3 py-1 rounded-lg flex items-center hover:bg-blue-600">

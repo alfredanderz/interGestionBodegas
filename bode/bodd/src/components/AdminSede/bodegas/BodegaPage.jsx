@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BodegaList from "./BodegaList";
+import PropTypes from "prop-types"; // Solo añadí esta línea
 
 const BodegaPage = () => {
   const [bodegas, setBodegas] = useState([]);
@@ -126,5 +127,10 @@ const DeleteConfirmationModal = ({ onConfirm, onCancel }) => (
     </div>
   </dialog>
 );
+
+DeleteConfirmationModal.propTypes = {
+  onConfirm: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
 
 export default BodegaPage;

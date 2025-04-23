@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { X, Menu } from "lucide-react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -12,7 +11,6 @@ import drop from "./img/drop.png";
 import Navbar from "../admin/Navbar";
 
 export default function MainView() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const images = [
     "https://blog.akzent.mx/hubfs/claves-en-la-digitalizacion-de-bodegas-industriales-akzent-blog-espan__ol_720.jpg",
     "https://img10.naventcdn.com/avisos/18/01/42/83/36/34/360x266/1442368434.jpg?isFirstImage=true",
@@ -27,7 +25,6 @@ export default function MainView() {
   ];
   return (
     <div className="w-full font-sans">
-      
       <Navbar></Navbar>
       {/* Hero Section */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
