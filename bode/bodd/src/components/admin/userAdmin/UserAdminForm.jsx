@@ -54,10 +54,6 @@ const UserAdminForm = () => {
     fetchUser();
   }, [id, isEditing]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -165,19 +161,8 @@ const UserAdminForm = () => {
                 autoComplete: "new-password",
               },
             },
-          ].map(({ name, label, pattern, hint, type = "text" }) => (
+          ].map(({ name, hint }) => (
             <div key={name}>
-              <label className="input validator">
-                <input
-                  type={type}
-                  name={name}
-                  required
-                  placeholder={label}
-                  pattern={pattern}
-                  value={formData[name]}
-                  onChange={handleChange}
-                />
-              </label>
               <p className="validator-hint">{hint}</p>
             </div>
           ))}
