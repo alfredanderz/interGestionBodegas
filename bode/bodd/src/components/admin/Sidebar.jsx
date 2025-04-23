@@ -1,6 +1,5 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { MdDashboard, MdPeople, MdSecurity } from "react-icons/md";
 
 const Sidebar = () => {

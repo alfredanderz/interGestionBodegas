@@ -216,9 +216,7 @@ export default function MainView() {
             © 2025 Bodegas SIGEBO - Todos los derechos reservados.
           </p>
         </section>
-        <div className="flex justify-center space-x-4 mt-4">
-          <a className="hover:text-orange-500 transition"></a>
-        </div>
+        <div className="flex justify-center space-x-4 mt-4"></div>
       </footer>
     </div>
   );

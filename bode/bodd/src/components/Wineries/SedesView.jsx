@@ -61,7 +61,6 @@ export default function SedesClienteView() {
 
   return (
     <>
-      {/* Fondo fijo, detrás de todo */}
       <div
         className="fixed inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${cop})` }}

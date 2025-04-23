@@ -1,6 +1,5 @@
 import React from "react";
-export default function Tablelist( {handleOpen}) {
-
+export default function Tablelist() {
   const clients = [
     {
       id: 1,
@@ -23,10 +22,10 @@ export default function Tablelist( {handleOpen}) {
       color: "Purple",
       isactive: true,
     },
-  ]
+  ];
 
   return (
-    <>
+    <div>
       <div className="overflow-x-auto mt-10">
         <table className="table">
           {/* head */}
@@ -41,32 +40,39 @@ export default function Tablelist( {handleOpen}) {
           <tbody className="hover">
             {/* row 1 */}
             {clients.map((client) => (
-            <tr key={client.id}>
-              <th>{client.id}</th>
-              <td>{client.name}</td>
-              <td>{client.job}</td>
-              <td>{client.color}</td>
-              <td>
-                <button className={`btn rounded-full w-20 ${client.isactive ? `btn-primary`: `btn-outline-primary`}`}>details</button>
-              </td>
-              <td>
-                <button onClick={()=>handleOpen('edit')} className="btn btn-warning rounded-full w-20">Editar
-                  
-                </button>
-              </td>
-              <td>
-                <button className="btn btn-error rounded-full w-20">Eliminar
-
-                </button>
-              </td>
-            </tr>
-            
-            
+              <tr key={client.id}>
+                <th>{client.id}</th>
+                <td>{client.name}</td>
+                <td>{client.job}</td>
+                <td>{client.color}</td>
+                <td>
+                  <button
+                    className={`btn rounded-full w-20 ${
+                      client.isactive ? `btn-primary` : `btn-outline-primary`
+                    }`}
+                  >
+                    details
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => "edit"}
+                    className="btn btn-warning rounded-full w-20"
+                  >
+                    Editar
+                  </button>
+                </td>
+                <td>
+                  <button className="btn btn-error rounded-full w-20">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
             ))}
             {/* row 2 */}
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
