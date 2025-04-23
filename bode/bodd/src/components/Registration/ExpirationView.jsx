@@ -67,25 +67,6 @@ export default function ExpirationView() {
               <th className="px-4 py-2 text-left">Acción</th>
             </tr>
           </thead>
-          <tbody>
-            {bodegas.map((bodega) => (
-              <tr className="border-t">
-                <td className="px-4 py-2">{bodega.folio}</td>
-                <td className="px-4 py-2">{bodega.tamaño}</td>
-                <td className="px-4 py-2">{bodega.precio}</td>
-                <td className="px-4 py-2">{bodega.vencimiento}</td>
-                <td className="px-4 py-2">{bodega.estado}</td>
-                <td className="px-4 py-2">
-                  <button
-                    onClick={() => handleAction(bodega.accion)}
-                    className="bg-[#FF7700] text-white py-2 px-4 rounded-md hover:bg-[#a77d4e]"
-                  >
-                    {bodega.accion}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
         </table>
       </div>
     </div>

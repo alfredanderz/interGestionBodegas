@@ -6,47 +6,54 @@ const SedePage = () => {
   const [sedes, setSedes] = useState([]);
   const navigate = useNavigate();
 
-  // Cargar sedes al montar el componente
-  useEffect(() => {
-    const token = localStorage.getItem("token"); // Asegúrate que lo estás guardando al hacer login
+  const fetchSedes = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:8080/api/sedes/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    fetch("http://localhost:8080/api/sedes/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Error ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => setSedes(data))
-      .catch((err) => console.error("Error al cargar sedes:", err));
-  }, []);
+      if (!response.ok) throw new Error(`Error ${response.status}`);
 
-  const handleDelete = (id) => {
+      const data = await response.json();
+      setSedes(data);
+    } catch (err) {
+      console.error("Error al cargar sedes:", err);
+    }
+  };
+
+  const deleteSede = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`http://localhost:8080/api/sedes/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) throw new Error("Error al eliminar sede");
+
+      return true;
+    } catch (err) {
+      console.error("Error al eliminar:", err);
+      return false;
+    }
+  };
+
+  const handleDelete = async (id) => {
     const confirmDelete = window.confirm(
       "¿Estás seguro de eliminar esta sede?"
     );
-    if (confirmDelete) {
-      const token = localStorage.getItem("token");
+    if (!confirmDelete) return;
 
-      fetch(`http://localhost:8080/api/sedes/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Error al eliminar sede");
-          }
-          setSedes((prevSedes) => prevSedes.filter((sede) => sede.id !== id));
-        })
-        .catch((err) => console.error("Error al eliminar:", err));
+    const success = await deleteSede(id);
+    if (success) {
+      setSedes((prevSedes) => prevSedes.filter((sede) => sede.id !== id));
     }
   };
+
+  useEffect(() => {
+    fetchSedes();
+  }, []);
 
   return (
     <div className="p-6">

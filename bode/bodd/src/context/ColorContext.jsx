@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const ColorContext = createContext();
 
@@ -18,8 +18,8 @@ export const fuchsia = "#d946ef";
 export const blue = "#3b82f6";
 export const orange = "#f97316";
 
-export const ColorProvider = ({ children }) => {
-  const [color, setColor] = useState(() => {
+export const ColorProvider = () => {
+  const [color] = useState(() => {
     const stored = localStorage.getItem("theme-color");
     return stored || "orange";
   });
@@ -80,15 +80,5 @@ export const ColorProvider = ({ children }) => {
     localStorage.setItem("theme-color", color);
   }, [color]);
 
-  const changeColor = (newColor) => {
-    setColor(newColor);
-  };
-
-  return (
-    <ColorContext.Provider value={{ color, changeColor }}>
-      {children}
-    </ColorContext.Provider>
-  );
+  return <ColorContext.Provider></ColorContext.Provider>;
 };
-
-export const useColor = () => useContext(ColorContext);

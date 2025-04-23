@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const UserAdminList = ({ users, onDelete }) => {
+const UserAdminList = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
   // Función para filtrar usuarios
-  const filteredUsers = users.filter((user) =>
+  const filteredUsers = (user) =>
     Object.values(user).some(
       (value) =>
         typeof value === "string" &&
         value.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+    );
 
   return (
     <div className="rounded-box border border-base-content/5 bg-base-100 p-3 shadow-md ">
@@ -96,10 +95,7 @@ const UserAdminList = ({ users, onDelete }) => {
                           className="h-4 w-4"
                         />
                       </button>
-                      <button
-                        className="btn btn-sm btn-outline btn-error"
-                        onClick={() => onDelete(user.id)}
-                      >
+                      <button className="btn btn-sm btn-outline btn-error">
                         <img
                           src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-coloricon-1/21/39-512.png"
                           alt="Eliminar"
@@ -124,7 +120,7 @@ const UserAdminList = ({ users, onDelete }) => {
       </div>
       {filteredUsers.length > 0 && (
         <div className="text-center mt-2 text-sm text-gray-500">
-          Mostrando {filteredUsers.length} de {users.length} administradores
+          Mostrando {filteredUsers.length} de administradores
         </div>
       )}
     </div>
