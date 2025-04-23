@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import BodegaGestion from "../components/AdminSede/sede/AgregarBodega";
 import VistaBodega from "../components/AdminSede/sede/VistaBodegas";
 import VistaCliente from "../components/AdminSede/sede/ListaClientes";
 import NotFoundView from "../components/NotFoundView";
@@ -18,7 +17,7 @@ const SedeAdminRoutes = () => {
         <Route path="bodegas/edit/:id" element={<BodegaForm />} />
         <Route path="clientes" element={<VistaBodega />} />
         <Route path="vistacliente" element={<VistaCliente />} />
-        
+
         <Route path="*" element={<NotFoundView />} />
       </Route>
     </Routes>

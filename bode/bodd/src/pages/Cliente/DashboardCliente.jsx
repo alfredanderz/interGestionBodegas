@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdStorage, MdAttachMoney, MdCalendarToday, MdWarning } from "react-icons/md";
+import {
+  MdStorage,
+  MdAttachMoney,
+  MdCalendarToday,
+  MdWarning,
+} from "react-icons/md";
 
 const DashboardCliente = () => {
   const [rentas, setRentas] = useState([]);
@@ -15,16 +20,19 @@ const DashboardCliente = () => {
   useEffect(() => {
     const obtenerRentasCliente = async () => {
       try {
-        if (!user || !user.id) {
+        if (!user?.id) {
           throw new Error("No se pudo identificar al usuario");
         }
 
-        const response = await fetch(`${API_URL}/api/rentas/cliente/${user.id}`, {
-          headers: { 
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json"
+        const response = await fetch(
+          `${API_URL}/api/rentas/cliente/${user.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
           }
-        });
+        );
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -46,15 +54,20 @@ const DashboardCliente = () => {
 
   // Calcular métricas
   const totalBodegas = rentas.length;
-  const proximasAVencer = rentas.filter(r => {
+  const proximasAVencer = rentas.filter((r) => {
     const fechaFin = new Date(r.fechaFin);
     const hoy = new Date();
     const diffTime = fechaFin - hoy;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays <= 30 && diffDays > 0; // Vencen en los próximos 30 días
   }).length;
-  const vencidas = rentas.filter(r => new Date(r.fechaFin) < new Date()).length;
-  const montoMensual = rentas.reduce((sum, renta) => sum + (renta.bodega?.precio || 0), 0);
+  const vencidas = rentas.filter(
+    (r) => new Date(r.fechaFin) < new Date()
+  ).length;
+  const montoMensual = rentas.reduce(
+    (sum, renta) => sum + (renta.bodega?.precio || 0),
+    0
+  );
 
   if (loading) {
     return (
@@ -65,17 +78,13 @@ const DashboardCliente = () => {
   }
 
   if (error) {
-    return (
-      <div className="p-8 text-center text-red-500">
-        Error: {error}
-      </div>
-    );
+    return <div className="p-8 text-center text-red-500">Error: {error}</div>;
   }
 
   return (
     <div className="p-6 ml-40 mt-10">
       <h1 className="text-2xl font-bold mb-6">Mis Bodegas Rentadas</h1>
-      
+
       {/* Tarjetas de métricas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {/* Total de bodegas rentadas */}
@@ -88,18 +97,20 @@ const DashboardCliente = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Pago mensual total */}
         <div className="bg-green-50 p-4 rounded-lg shadow">
           <div className="flex items-center">
             <MdAttachMoney className="text-green-500 text-2xl mr-2" />
             <div>
               <h3 className="text-gray-600 text-sm">Pago Mensual Total</h3>
-              <p className="text-2xl font-bold">${montoMensual.toLocaleString()}</p>
+              <p className="text-2xl font-bold">
+                ${montoMensual.toLocaleString()}
+              </p>
             </div>
           </div>
         </div>
-        
+
         {/* Próximas a vencer */}
         <div className="bg-yellow-50 p-4 rounded-lg shadow">
           <div className="flex items-center">
@@ -110,7 +121,7 @@ const DashboardCliente = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Vencidas */}
         <div className="bg-red-50 p-4 rounded-lg shadow">
           <div className="flex items-center">
@@ -128,12 +139,24 @@ const DashboardCliente = () => {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bodega</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ubicación</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Mensual</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Inicio</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Fin</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Bodega
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Ubicación
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Precio Mensual
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Fecha Inicio
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Fecha Fin
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Estado
+              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -142,10 +165,10 @@ const DashboardCliente = () => {
               const hoy = new Date();
               const diffTime = fechaFin - hoy;
               const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-              
+
               let estado = "";
               let estadoClass = "";
-              
+
               if (diffDays <= 0) {
                 estado = "Vencida";
                 estadoClass = "bg-red-100 text-red-800";
@@ -158,8 +181,8 @@ const DashboardCliente = () => {
               }
 
               return (
-                <tr 
-                  key={renta.id} 
+                <tr
+                  key={renta.id}
                   className="hover:bg-gray-50 cursor-pointer"
                   onClick={() => navigate(`/renta/detalle/${renta.id}`)}
                 >
@@ -186,7 +209,9 @@ const DashboardCliente = () => {
                     {new Date(renta.fechaFin).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${estadoClass}`}>
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${estadoClass}`}
+                    >
                       {estado}
                     </span>
                   </td>
@@ -195,12 +220,14 @@ const DashboardCliente = () => {
             })}
           </tbody>
         </table>
-        
+
         {rentas.length === 0 && (
           <div className="text-center py-8">
-            <p className="text-gray-500">No tienes bodegas rentadas actualmente</p>
-            <button 
-              onClick={() => navigate('/renta/nueva')}
+            <p className="text-gray-500">
+              No tienes bodegas rentadas actualmente
+            </p>
+            <button
+              onClick={() => navigate("/renta/nueva")}
               className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
             >
               Rentar una bodega

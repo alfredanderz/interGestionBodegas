@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import {
-  MdDashboard,
-  MdPeople,
-  MdRestaurant,
-  MdOutlineSell,
-  MdSecurity,
-} from "react-icons/md";
+import { MdDashboard, MdPeople, MdSecurity } from "react-icons/md";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
